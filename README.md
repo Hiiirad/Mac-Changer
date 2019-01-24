@@ -10,7 +10,7 @@ Hi guys :)
 
 ## Versions:
 1) **1st Version**:
-	Normal mac changer. User type new mac address.
+	Normal mac changer. User type new mac address and check it with *Regular Expression (Regex)*.
 2) **2nd Version**:
 	Adding options to change different interfaces.
 3) **3rd Version**:
