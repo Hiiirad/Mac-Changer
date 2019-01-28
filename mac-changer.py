@@ -9,7 +9,15 @@ else:
     print("Invalid mac. Check it and try again")
     quit()
 
+# Validating Interface
+interface = input("Please insert name of the interface you want to change its mac: ")
+if search(string=interface, pattern=r"^(eth|wlan)\d{1}$"):
+    print("Valid interface")
+else:
+    print("Invalid Interface. Check it and try again")
+    quit()
+
 # Start changing mac address
-call("ifconfig eth0 down", shell=True)
-call("ifconfig eth0 hw ether {0}".format(mac), shell=True)
-call("ifconfig eth0 up", shell=True)
+call("ifconfig {0} down", shell=True)
+call("ifconfig {0} hw ether {1}".format(interface, mac), shell=True)
+call("ifconfig {0} up", shell=True)
