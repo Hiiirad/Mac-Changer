@@ -7,7 +7,7 @@ Hi guys :)
  This program will only works on **Linux** systems.
 > This program has a lot of versions and I will add them step by step.
 > I will edit this readme file and make it better later.
-> Program currently has all of stage 2
+> Program currently has all of stage 3
 
 ## Versions:
 1) **1st Version**:
