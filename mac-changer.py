@@ -2,6 +2,12 @@ from subprocess import call
 from re import search
 from random import sample
 
+'''
+List of standard OUI:
+http://standards-oui.ieee.org/oui/oui.txt
+http://standards-oui.ieee.org/oui/oui.csv
+'''
+
 # Validating mac address
 def mac_validation(mac):
     if search(string=mac, pattern=r"^([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}$"):
