@@ -22,10 +22,10 @@ def interface_validation(interface):
 random_or_not = input("Do you want your mac address to change randomly? [(Y)es or (N)o] ").lower()
 if random_or_not == "y" or random_or_not == "yes":
     # random mac
-    hex_numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"]
+    hex_characters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"]
     random_mac = []
     for i in range(6):
-        random_mac.append("".join(sample(hex_numbers, 2)))
+        random_mac.append("".join(sample(hex_characters, 2)))
     random_mac = ":".join(random_mac)
     print("Your new mac will be {0}".format(random_mac))
 elif random_or_not == "n" or random_or_not == "no":
