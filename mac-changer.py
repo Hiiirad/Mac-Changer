@@ -1,21 +1,41 @@
 from subprocess import call
 from re import search
+from random import sample
 
 # Validating mac address
-mac = input("Please insert your new mac: ")
-if search(string=mac, pattern=r"^([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}$"):
-    print("Valid mac")
-else:
-    print("Invalid mac. Check it and try again")
-    quit()
+def mac_validation(mac):
+    if search(string=mac, pattern=r"^([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}$"):
+        return "Valid mac"
+    else:
+        print("Invalid mac. Check it and try again")
+        quit()
 
 # Validating Interface
-interface = input("Please insert name of the interface you want to change its mac: ")
-if search(string=interface, pattern=r"^(eth|wlan)\d{1}$"):
-    print("Valid interface")
+def interface_validation(interface):
+    if search(string=interface, pattern=r"^(eth|wlan)\d{1}$"):
+        return "Valid interface"
+    else:
+        print("Invalid Interface. Check it and try again")
+        quit()
+
+# Checking if user wants to choose new mac address randomly or not
+random_or_not = input("Do you want your mac address to change randomly? [(Y)es or (N)o] ").lower()
+if random_or_not == "y" or random_or_not == "yes":
+    # random mac
+    hex_numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"]
+    random_mac = []
+    for i in range(6):
+        random_mac.append("".join(sample(hex_numbers, 2)))
+    random_mac = ":".join(random_mac)
+elif random_or_not == "n" or random_or_not == "no":
+    mac = input("Please insert your new mac: ")
+    mac_validation(mac)
 else:
-    print("Invalid Interface. Check it and try again")
+    print("Please check your answer!")
     quit()
+
+interface = input("Please insert name of the interface you want to change its mac: [wlan* or eth*] ")
+interface_validation(interface)
 
 # Start changing mac address
 call("ifconfig {0} down", shell=True)
