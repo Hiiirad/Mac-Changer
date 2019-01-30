@@ -33,7 +33,7 @@ if random_or_not == "y" or random_or_not == "yes":
     for i in range(6):
         random_mac.append("".join(sample(hex_characters, 2)))
     random_mac = ":".join(random_mac)
-    print("Your new mac will be {0}".format(random_mac))
+    print("Your new mac address will be {0}".format(random_mac))
 elif random_or_not == "n" or random_or_not == "no":
     mac = input("Please insert your new mac: ")
     mac_validation(mac)
