@@ -7,7 +7,10 @@ Hi guys :)
  This program will only works on **Linux** systems.
 > This program has a lot of versions and I will add them step by step.
 > I will edit this readme file and make it better later.
+
 > Program currently has all of stage 3
+
+*oui.csv file contains all of standard OUI part of a mac address (first half of a mac address or first 24bit of mac address)*
 
 ## Versions:
 1) **1st Version**:
