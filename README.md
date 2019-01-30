@@ -24,8 +24,6 @@ Hi guys :)
 5) **5th Version**:
 	Add some option for saving original mac address somewhere so that user can reverse mac address to normal whenever user wants. 
 6) **6th Version**:
-	Set options with *optparse* in order to commands be more human readable.
-7) **7th Version**:
 	Option for user to use this program in different versions of linux kernel.
 	Commands have changed after kernel version 4.15 (After Ubuntu 18.04 released)
 	So I think it is a good thing to add this option.
