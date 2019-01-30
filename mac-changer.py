@@ -48,3 +48,5 @@ interface_validation(interface)
 call("ifconfig {0} down", shell=True)
 call("ifconfig {0} hw ether {1}".format(interface, mac), shell=True)
 call("ifconfig {0} up", shell=True)
+
+print("Done :)")
