@@ -57,9 +57,7 @@ else:
     print("Please check your answer!")
     quit()
 
-# Saving old mac addresses
-# 1st mac: Ethernet
-# 2nd mac: Wireless
+# Saving old mac addresses | delete text files in reverse mode
 if random_or_not == "r" or random_or_not == "reverse":
     delete = print("Do you want to delete files related to your old mac address? [(Y)es or (N)o]").lower()
     if delete == "y" or delete =="yes":
