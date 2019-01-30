@@ -8,7 +8,7 @@ Hi guys :)
 > This program has a lot of versions and I will add them step by step.
 > I will edit this readme file and make it better later.
 
-> Program currently has stages 1, 2, 3, 5 done completely.
+> Program currently has stages 1, 2, 3, 5.
 
 *oui.csv file contains all of standard OUI part of a mac address (first half of a mac address or first 24bit of mac address)*
 
