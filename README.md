@@ -8,7 +8,7 @@ Hi guys :)
 > This program has a lot of versions and I will add them step by step.
 > I will edit this readme file and make it better later.
 
-> Program currently has all of stage 3
+> Program currently has stages 1, 2, 3, 5 done completely.
 
 *oui.csv file contains all of standard OUI part of a mac address (first half of a mac address or first 24bit of mac address)*
 
@@ -22,7 +22,7 @@ Hi guys :)
 4) **4th Version**:
 	Adding option for change mac to specific mac so that it will look like mac of other's vendor.
 5) **5th Version**:
-	Add some option for saving original mac address somewhere so that user can reverse mac address to normal whenever he/she wants. 
+	Add some option for saving original mac address somewhere so that user can reverse mac address to normal whenever user wants. 
 6) **6th Version**:
 	Set options with *optparse* in order to commands be more human readable.
 7) **7th Version**:
