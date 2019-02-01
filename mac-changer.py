@@ -1,6 +1,7 @@
 from subprocess import call
 from re import search
 from random import sample
+from csv import reader
 
 '''
 List of standard OUI:
@@ -25,7 +26,7 @@ def interface_validation(interface):
         quit()
 
 # Checking if user wants to choose new mac address randomly or not
-random_or_not = input("Do you want your mac address to change randomly? [(Y)es or (N)o]\nOr\nDo you want your mac address back to original one? [(R)everse]").lower()
+random_or_not = input("Do you want your mac address to change randomly? [(Y)es or (N)o]\nOr\nDo you want to choose first part of your mac address based on other manufacturers mac address? [(O)UI]\nOr\nDo you want your mac address back to original one? [(R)everse]").lower()
 interface = input("Please insert name of the interface you want to change its mac: [wlan* or eth*] ")
 interface_validation(interface)
 print("Your username is:")
@@ -53,6 +54,9 @@ elif random_or_not == "r" or random_or_not == "reverse":
     elif search(string=interface, pattern=r"^wlan\d{1}$"):
         with open(file="/home/{0}/wlan-old-mac.txt".format(user), mode="r", encoding="utf-8") as old_mac:
             mac = old_mac.readline()
+elif random_or_not == "o" or random_or_not == "oui":
+    # TODO: function of it will be done
+    pass
 else:
     print("Please check your answer!")
     quit()
