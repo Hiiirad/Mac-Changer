@@ -5,10 +5,12 @@ Hi guys :)
  There are a lot of reasons to change mac address such as anonymity, sabotage in network etc.
  My program will provide a lot of options for you to change your interface(s)'s mac address.
  This program will only works on **Linux** systems.
+ 
 > This program has a lot of versions and I will add them step by step.
+
 > I will edit this readme file and make it better later.
 
-> Program currently has stages 1, 2, 3, 5.
+> Program currently has stages 1, 2, 3, 4 (some part of it), 5.
 
 *oui.csv file contains all of standard OUI part of a mac address (first half of a mac address or first 24bit of mac address)*
 
