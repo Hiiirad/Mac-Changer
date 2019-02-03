@@ -4,6 +4,8 @@ from random import sample
 from csv import reader
 
 '''
+The strings, input and output of this program is in lowercase. => case-insensitive
+
 List of standard OUI:
 http://standards-oui.ieee.org/oui/oui.txt
 http://standards-oui.ieee.org/oui/oui.csv
@@ -11,7 +13,7 @@ http://standards-oui.ieee.org/oui/oui.csv
 
 # Validating mac address
 def mac_validation(mac):
-    if search(string=mac, pattern=r"^([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}$"):
+    if search(string=mac, pattern=r"^([0-9a-f]{2}:){5}[0-9a-f]{2}$"):
         return "Valid mac"
     else:
         print("Invalid mac. Check it and try again")
@@ -27,7 +29,7 @@ def interface_validation(interface):
 
 # Checking if user wants to choose new mac address randomly or not
 random_or_not = input("Do you want your mac address to change randomly? [(Y)es or (N)o]\nOr\nDo you want to choose first part of your mac address based on other manufacturers mac address? [(O)UI]\nOr\nDo you want your mac address back to original one? [(R)everse]").lower()
-interface = input("Please insert name of the interface you want to change its mac: [wlan* or eth*] ")
+interface = input("Please insert name of the interface you want to change its mac: [wlan* or eth*] ").lower()
 interface_validation(interface)
 print("Your username is:")
 call("echo $USER > /tmp/user.txt", shell=True)
@@ -44,7 +46,7 @@ if random_or_not == "y" or random_or_not == "yes":
     print("Your new mac address will be {0}".format(random_mac))
 elif random_or_not == "n" or random_or_not == "no":
     # user's new mac
-    mac = input("Please insert your new mac: ")
+    mac = input("Please insert your new mac: ").lower()
     mac_validation(mac)
 elif random_or_not == "r" or random_or_not == "reverse":
     # back to normal
