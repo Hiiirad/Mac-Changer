@@ -16,7 +16,7 @@ Hi guys :)
 
 ## Versions:
 1) **1st Version**:
-	Normal mac changer. User type new mac address and program will validate it with *Regular Expression (Regex)*
+	Normal mac changer. User type new mac address and program will validate it with *Regular Expression (Regex)*.
 	Everything in this program is in lowercase. So it is case-insensitive.
 	This program has no problem working with uppercase letters, but output of program is always in lowercase.
 2) **2nd Version**:
