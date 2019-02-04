@@ -25,9 +25,6 @@ This program will only works on **Linux** systems and I believe it would be work
 ```
 sudo apt install git
 ```
-```
-git clone https://github.com/Hiiirad/Mac-Changer.git
-```
 ### Installing
 I prefer using [Anaconda](https://www.anaconda.com/) instead of using [Pip or PyPI](https://pypi.org/), but you decide which is good for you.
  - Using Pip:
@@ -57,6 +54,12 @@ I prefer using [Anaconda](https://www.anaconda.com/) instead of using [Pip or Py
     ```
 
 ## Usage
+```
+git clone https://github.com/Hiiirad/Mac-Changer.git
+```
+```
+cd Mac-Changer/
+```
 If kernel version of your OS is older than 4.15 you should run this program like this:
 ```
 python3 mac-changer.py
