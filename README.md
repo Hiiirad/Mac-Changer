@@ -31,3 +31,5 @@ Hi guys :)
 	Option for user to use this program in different versions of linux kernel.
 	Commands have changed after kernel version 4.15 (After Ubuntu 18.04 released)
 	So I think it is a good thing to add this option.
+7) **7th Version**:
+	I will implement *Fuzzy String Matching* for searching in OUIs. There are more than 17K names of organizations with different OUIs which is alot to process and show users to choose from them. I will add this feature soon...!
