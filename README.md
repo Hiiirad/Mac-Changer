@@ -1,34 +1,69 @@
 # Change Mac Address
+[![License](http://img.shields.io/:license-mit-blue.svg)](LICENSE)
 
-Hi guys :)
+Hi everybody :)
 
- There are a lot of reasons to change mac address such as anonymity, sabotage in network etc.
- My program will provide a lot of options for you to change your interface(s)'s mac address.
- This program will only works on **Linux** systems.
- 
-> This program has a lot of versions and I will add them step by step.
+* There are a lot of reasons to change mac address such as anonymity, sabotage in network etc.
+My program will provide a lot of options for you to change your interface(s)'s mac address.
+* oui.csv file contains all of standard OUI (Organizationally Unique Identifier) part of a mac address (first half of a mac address or first 24bit of mac address)
 
-> I will edit this readme file and make it better later.
+## Getting Started
+This program will only works on **Linux** systems and I believe it would be work perfectly on Macbooks. My OS is Ubuntu 18.04 and I design this program to run on all debian-based linux systems. The installation process will be different if you use other linux distributions.
 
-> Program currently has stages 1, 2, 3, 4, 5, 6.
+## Features:
+* Everything in this program is in lowercase. So it is case-insensitive. This program has no problem working with uppercase letters, but output of program is always in lowercase.
+1. Every interface and mac address that user desire to change will be validate with *Regular Expression (Regex)*.
+2. Users can decide which interface they want to change (*Wireless or Ethernet*).
+3. Program can set a completely random mac:
+    - This random mac can be just randomly selected from hex characters.
+    - Or it can be based on **Standard OUI from IEEE** which you can access it from here ([Text File](http://standards-oui.ieee.org/oui/oui.txt) and [CSV File](http://standards-oui.ieee.org/oui/oui.csv)).
+4. Original mac address of interfaces will be save at ```/tmp/``` so user can reverse mac address back to normal choose reverse option.
+5. Commands for apply these changes are different based on kernel version. Program can detect it and run different kind of codes. (Ubuntu 18.04's kernel version is 4.15)
+6. This feature will be added soon:
+	* *Fuzzy String Matching* for searching in OUIs. There are more than 17K names of organizations with different OUIs which is alot to process and show users to choose from them.
 
-*oui.csv file contains all of standard OUI (Organizationally Unique Identifier) part of a mac address (first half of a mac address or first 24bit of mac address)*
+### Prerequisites
+```
+sudo apt install git
+```
+```
+git clone https://github.com/Hiiirad/Mac-Changer.git
+```
+### Installing
+I prefer using [Anaconda](https://www.anaconda.com/) instead of using [Pip or PyPI](https://pypi.org/), but you decide which is good for you.
+ - Using Pip:
+    - ```sudo apt install python3-pip```
+    - ```pip install pip```
+    - ```pip install -r requirements.txt```
+ - Using Anaconda: Installation process is completely documented [here](https://docs.anaconda.com/anaconda/install/linux/).
 
-## Versions:
-1) **1st Version**:
-	Normal mac changer. User type new mac address and program will validate it with *Regular Expression (Regex)*.
-	Everything in this program is in lowercase. So it is case-insensitive.
-	This program has no problem working with uppercase letters, but output of program is always in lowercase.
-2) **2nd Version**:
-	Adding options to change different interfaces.
-3) **3rd Version**:
-	Adding option for users to change their mac address randomly. 
-4) **4th Version**:
-	Adding option for change mac to specific mac so that it will look like mac of other's vendor.
-5) **5th Version**:
-	Add some option for saving original mac address somewhere so that user can reverse mac address to normal whenever user wants. 
-6) **6th Version**:
-	Option for user to use this program in different versions of linux kernel.
-	Commands have changed after kernel version 4.15 (After Ubuntu 18.04 released)
-7) **7th Version**:
-	I will implement *Fuzzy String Matching* for searching in OUIs. There are more than 17K names of organizations with different OUIs which is alot to process and show users to choose from them. I will add this feature soon...!
+### Upgrading
+* Pip:
+    ```
+    pip install -U pip
+    ```
+* Anaconda:
+    ```
+    conda update --all
+    ```
+
+### Version check to verify installation
+* Pip:
+    ```
+    pip --version
+    ```
+* Anaconda:
+    ```
+    conda --version
+    ```
+
+## Usage
+```
+python mac-changer.py
+```
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
