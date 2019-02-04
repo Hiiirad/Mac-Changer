@@ -12,15 +12,14 @@ This program will only works on **Linux** systems and I believe it would be work
 
 ## Features:
 * Everything in this program is in lowercase. So it is case-insensitive. This program has no problem working with uppercase letters, but output of program is always in lowercase.
-1. Every interface and mac address that user desire to change will be validate with *Regular Expression (Regex)*.
-2. Users can decide which interface they want to change (*Wireless or Ethernet*).
-3. Program can set a completely random mac:
+- [x] Every interface and mac address that user desire to change will be validate with *Regular Expression (Regex)*.
+- [x] Users can decide which interface they want to change (*Wireless or Ethernet*).
+- [x] Program can set a completely random mac:
     - This random mac can be just randomly selected from hex characters.
     - Or it can be based on **Standard OUI from IEEE** which you can access it from here ([Text File](http://standards-oui.ieee.org/oui/oui.txt) and [CSV File](http://standards-oui.ieee.org/oui/oui.csv)).
-4. Original mac address of interfaces will be save at ```/tmp/``` so user can reverse mac address back to normal choose reverse option.
-5. Commands for apply these changes are different based on kernel version. Program can detect it and run different kind of codes. (Ubuntu 18.04's kernel version is 4.15)
-6. This feature will be added soon:
-	* *Fuzzy String Matching* for searching in OUIs. There are more than 17K names of organizations with different OUIs which is alot to process and show users to choose from them.
+- [x] Original mac address of interfaces will be save at ```/tmp/``` so user can reverse mac address back to normal choose reverse option.
+- [x] Commands for apply these changes are different based on kernel version. Program can detect it and run different kind of codes. (Ubuntu 18.04's kernel version is 4.15)
+- [ ] *Fuzzy String Matching* for searching in OUIs. There are more than 17K names of organizations with different OUIs which is alot to process and show users to choose from them.
 
 ### Prerequisites
 ```
