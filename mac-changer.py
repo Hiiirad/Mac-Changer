@@ -2,6 +2,7 @@ from subprocess import call
 from re import search
 from random import sample, choice
 from csv import reader
+from os import popen
 
 '''
 The strings, input and output of this program is in lowercase. => case-insensitive
@@ -106,9 +107,19 @@ else:
     call("ip addr | grep -E 'ether' | cut --delimiter=' ' -f 6 | sed -n '1p' > /tmp/eth-old-mac.txt", shell=True)
     call("ip addr | grep -E 'ether' | cut --delimiter=' ' -f 6 | sed -n '2p' > /tmp/wlan-old-mac.txt", shell=True)
 
-# Start changing mac address
-call("ifconfig {0} down".format(interface), shell=True)
-call("ifconfig {0} hw ether {1}".format(interface, mac), shell=True)
-call("ifconfig {0} up".format(interface), shell=True)
+# Checking kernel version to call different commands
+kernel_version = popen("uname -r").read()
+if int(search(string=kernel_version, pattern=r"^\d{1}\.\d{1,2}")) < 4.15:
+
+    # Start changing mac address for kernel versions lower than 4.15
+    call("ifconfig {0} down".format(interface), shell=True)
+    call("ifconfig {0} hw ether {1}".format(interface, mac), shell=True)
+    call("ifconfig {0} up".format(interface), shell=True)
+else:
+
+    # Start changing mac address for kernel versions higher than 4.15
+    call("ip link set {0} down".format(interface), shell=True)
+    call("ip link set {0} address {1}".format(interface, mac), shell=True)
+    call("ip link set {0} up".format(interface), shell=True)
 
 print("Done :)")
