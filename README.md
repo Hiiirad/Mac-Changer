@@ -12,7 +12,7 @@ Hi guys :)
 
 > Program currently has stages 1, 2, 3, 4 (some part of it), 5.
 
-*oui.csv file contains all of standard OUI part of a mac address (first half of a mac address or first 24bit of mac address)*
+*oui.csv file contains all of standard OUI (Organizationally Unique Identifier) part of a mac address (first half of a mac address or first 24bit of mac address)*
 
 ## Versions:
 1) **1st Version**:
