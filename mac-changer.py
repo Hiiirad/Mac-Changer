@@ -109,7 +109,7 @@ else:
 
 # Checking kernel version to call different commands
 kernel_version = popen("uname -r").read()
-if int(search(string=kernel_version, pattern=r"^\d{1}\.\d{1,2}")) < 4.15:
+if float(".".join(kernel_version.split(".")[:2])) < 4.15:
 
     # Start changing mac address for kernel versions lower than 4.15
     call("ifconfig {0} down".format(interface), shell=True)
