@@ -10,7 +10,7 @@ Hi guys :)
 
 > I will edit this readme file and make it better later.
 
-> Program currently has stages 1, 2, 3, 4 (some part of it), 5.
+> Program currently has stages 1, 2, 3, 4, 5.
 
 *oui.csv file contains all of standard OUI (Organizationally Unique Identifier) part of a mac address (first half of a mac address or first 24bit of mac address)*
 
