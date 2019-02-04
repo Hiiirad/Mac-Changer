@@ -58,10 +58,14 @@ I prefer using [Anaconda](https://www.anaconda.com/) instead of using [Pip or Py
     ```
 
 ## Usage
+If kernel version of your OS is older than 4.15 you should run this program like this:
+```
+python3 mac-changer.py
+```
+Otherwise:
 ```
 python mac-changer.py
 ```
-
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
