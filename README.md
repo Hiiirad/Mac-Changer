@@ -23,6 +23,9 @@ This program will only works on **Linux** systems and I believe it would be work
 
 ### Prerequisites
 ```
+sudo apt update && sudo apt upgrade -y
+```
+```
 sudo apt install git
 ```
 ### Installing
