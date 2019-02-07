@@ -1,8 +1,11 @@
+from __future__ import unicode_literals
 from subprocess import call
 from re import search
 from random import sample, choice
 from csv import reader
 from os import popen
+from prompt_toolkit import prompt
+from prompt_toolkit.completion import WordCompleter
 
 '''
 The strings, input and output of this program is in lowercase. => case-insensitive
@@ -31,8 +34,8 @@ def interface_validation(interface):
 hex_characters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"]
 
 # Checking if user wants to choose new mac address randomly or not
-random_or_not = input("Do you want your mac address to change randomly? [(Y)es or (N)o]\nOr\nDo you want to choose first part of your mac address based on other manufacturers mac address? [(O)UI]\nOr\nDo you want your mac address back to original one? [(R)everse]\nYour answer: ").lower()
-interface = input("Please insert name of the interface you want to change its mac: [wlan* or eth*] ").lower()
+random_or_not = prompt("Do you want your mac address to change randomly? [(Y)es or (N)o]\nOr\nDo you want to choose first part of your mac address based on other manufacturers mac address? [(O)UI]\nOr\nDo you want your mac address back to original one? [(R)everse]\nYour answer: ").lower()
+interface = prompt("Please insert name of the interface you want to change its mac: [wlan* or eth*] ").lower()
 interface_validation(interface)
 
 if random_or_not == "y" or random_or_not == "yes":
@@ -44,7 +47,7 @@ if random_or_not == "y" or random_or_not == "yes":
     print("Your new mac address will be {0}".format(random_mac))
 elif random_or_not == "n" or random_or_not == "no":
     # user's new mac
-    mac = input("Please insert your new mac: ").lower()
+    mac = prompt("Please insert your new mac: ").lower()
     mac_validation(mac)
 elif random_or_not == "r" or random_or_not == "reverse":
     # back to normal
@@ -61,14 +64,14 @@ elif random_or_not == "o" or random_or_not == "oui":
         csvreader = reader(csvfile)
         next(csvreader) # ignore first row of csv which is header
         for row in csvreader:
-            oui[str(row[2])] = []
+            oui[str(row[2]).replace("  ", " ")] = []
 
     # Fill values of dictionary (OUI)
     with open(file="oui.csv", mode="r", encoding="utf-8") as csvfile:
         csvreader = reader(csvfile)
         next(csvreader) # ignore first row of csv which is header
         for row in csvreader:
-            value = oui[str(row[2])]
+            value = oui[str(row[2]).replace("  ", " ")]
             if len(str(row[1])) > 6:
                 continue
             else:
@@ -81,21 +84,37 @@ elif random_or_not == "o" or random_or_not == "oui":
         if value == []:
             del oui[key]
 
-    organization = choice(list(oui.keys()))
-    print("You will be using mac address of '{0}' organization.".format(organization))
-    random_oui = choice(oui.get("{0}".format(organization)))
-    character_need = 12 - len(random_oui)
-    mac_without_colon = random_oui + str("".join(sample(hex_characters, character_need)))
-    mac = mac_without_colon[0:2] + ":" + mac_without_colon[2:4] + ":" + mac_without_colon[4:6] + ":" + mac_without_colon[6:8] + ":" + mac_without_colon[8:10] + ":" + mac_without_colon[10:12]
-    mac = mac.lower()
-    print("Your new mac address will be {0}".format(mac))
+    random_organization = prompt("Do you want to choose your mac address from specific manufacturer? [(Y)es or (N)o] ").lower()
+    
+    if random_organization == "y" or random_organization == "yes":
+        organizations = WordCompleter(list(oui.keys()), ignore_case=True)
+        organization = prompt("Please select an organization name: ", completer=organizations)
+        print("You will be using mac address of '{0}' organization.".format(organization))
+        random_oui = choice(oui.get("{0}".format(organization)))
+        character_need = 12 - len(random_oui)
+        mac_without_colon = random_oui + str("".join(sample(hex_characters, character_need)))
+        mac = mac_without_colon[0:2] + ":" + mac_without_colon[2:4] + ":" + mac_without_colon[4:6] + ":" + mac_without_colon[6:8] + ":" + mac_without_colon[8:10] + ":" + mac_without_colon[10:12]
+        mac = mac.lower()
+        print("Your new mac address will be {0}".format(mac))
+    elif random_organization == "n" or random_organization == "no":
+        organization = choice(list(oui.keys()))
+        print("You will be using mac address of '{0}' organization.".format(organization))
+        random_oui = choice(oui.get("{0}".format(organization)))
+        character_need = 12 - len(random_oui)
+        mac_without_colon = random_oui + str("".join(sample(hex_characters, character_need)))
+        mac = mac_without_colon[0:2] + ":" + mac_without_colon[2:4] + ":" + mac_without_colon[4:6] + ":" + mac_without_colon[6:8] + ":" + mac_without_colon[8:10] + ":" + mac_without_colon[10:12]
+        mac = mac.lower()
+        print("Your new mac address will be {0}".format(mac))
+    else:
+        print("Please choose your answer correctly!")
+        quit()
 else:
     print("Please check your answer!")
     quit()
 
 # Saving old mac addresses | delete text files in reverse mode
 if random_or_not == "r" or random_or_not == "reverse":
-    delete = input("Do you want to delete files related to your old mac address? [(Y)es or (N)o] ").lower()
+    delete = prompt("Do you want to delete files related to your old mac address? [(Y)es or (N)o] ").lower()
     if delete == "y" or delete =="yes":
         call("rm /tmp/eth-old-mac.txt /tmp/wlan-old-mac.txt", shell=True)
     elif delete == "n" or delete =="no":
@@ -110,13 +129,11 @@ else:
 # Checking kernel version to call different commands
 kernel_version = popen("uname -r").read()
 if float(".".join(kernel_version.split(".")[:2])) < 4.15:
-
     # Start changing mac address for kernel versions lower than 4.15
     call("ifconfig {0} down".format(interface), shell=True)
     call("ifconfig {0} hw ether {1}".format(interface, mac), shell=True)
     call("ifconfig {0} up".format(interface), shell=True)
 else:
-
     # Start changing mac address for kernel versions higher than 4.15
     call("ip link set {0} down".format(interface), shell=True)
     call("ip link set {0} address {1}".format(interface, mac), shell=True)
