@@ -22,53 +22,55 @@ This program will only works on **Linux** systems and I believe it would be work
 - [x] There are more than 17K names of organizations with different OUIs which is alot to process and show users to choose from them. I used **prompt_toolkit** library to auto-complete names for searching in OUIs. 
 
 ### Prerequisites
-```
+```bash
 sudo apt update && sudo apt upgrade -y
 ```
-```
+```bash
 sudo apt install git
 ```
 ### Installing
 I prefer using [Anaconda](https://www.anaconda.com/) instead of using [Pip or PyPI](https://pypi.org/), but you decide which is good for you.
  - Using Pip:
-    - ```sudo apt install python3-pip```
-    - ```pip install pip```
-    - ```pip install -r requirements.txt```
+    ```bash
+    sudo apt install python3-pip
+    pip install pip
+    pip install -r requirements.txt
+    ```
  - Using Anaconda: Installation process is completely documented [here](https://docs.anaconda.com/anaconda/install/linux/).
 
 ### Upgrading
 * Pip:
-    ```
+    ```bash
     pip install -U pip
     ```
 * Anaconda:
-    ```
+    ```bash
     conda update --all
     ```
 
 ### Version check to verify installation
 * Pip:
-    ```
+    ```bash
     pip --version
     ```
 * Anaconda:
-    ```
+    ```bash
     conda --version
     ```
 
 ## Usage
-```
+```bash
 git clone https://github.com/Hiiirad/Mac-Changer.git
 ```
-```
+```bash
 cd Mac-Changer/
 ```
 If kernel version of your OS is older than 4.15 you should run this program like this:
-```
+```bash
 python3 mac-changer.py
 ```
 Otherwise:
-```
+```bash
 python mac-changer.py
 ```
 ## Contributing
